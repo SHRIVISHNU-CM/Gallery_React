@@ -1,7 +1,7 @@
 
 import axios from 'axios';
 import React, { useEffect, useState } from 'react'
-import {Link} from "react-router-dom"
+import { Link } from "react-router-dom"
 function Card() {
   const [name, setName] = useState("");
   const [image, setImage] = useState("");
@@ -56,29 +56,51 @@ function Card() {
 
   return (
     <>
-      <form onSubmit={HandleSubmit}>
-        <input
-          value={name}
-          onChange={e => setName(e.target.value)}
-          type='text'
-          placeholder='Enter Pic name'
-          className='input input-bordered border-success' />
-        <input
-          onChange={handelImg}
-          accept='image/*'
-          type='file'
-          className='file-input file-input-bordered file-input-secondary' />
-        <button type='submit' className='btn btn-success'>Upload</button>
-      </form>
+      <div >
+        <form onSubmit={HandleSubmit} className='w-full h-min p-2 flex flex-wrap flex-col lg:flex-row  justify-center items-center gap-2'>
+          <label className='input input-bordered border-success flex items-center gap-2'>
+            Pic Name:
+            <input
+              value={name}
+              onChange={e => setName(e.target.value)}
+              type='text'
+              placeholder='Enter Pic name'
+              className='' />
+          </label>
+
+          <input
+            onChange={handelImg}
+            accept='image/*'
+            type='file'
+            className='file-input file-input-bordered file-input-secondary' />
+          <div>
+            <button type='submit' className='btn btn-success'>Upload</button>
+          </div>
+        </form>
+      </div>
+
       <div className='flex justify-center w-full h-screen flex-wrap gap-4'>
         {
-          data &&data.map((el, i) => {
+          data && data.map((el, i) => {
             return (
-              <div key={i}>
-                <h1>{el.name}</h1>
-                <img src={el.avatar} className='w-[400px] h-[400px]'/>
-                <button onClick={() => HandleDrop(el._id)} className='btn btn-warning'>Delete</button>
-                <Link className='btn btn-accent' to={`/${el._id}`}>View</Link>
+              <div key={i} className='card'>
+                <div className='card-body'>
+                  <h1 className='card-title'>{el.name}</h1>
+                  <img src={el.avatar} className='w-[400px] h-[400px]' />
+                  <div className='card-actions justify-start'>
+                
+
+                  </div>
+                  <div className='card-actions justify-end'>
+
+                    <button onClick={() => HandleDrop(el._id)} className='btn btn-warning'>Delete</button>
+                    <Link className='btn btn-accent' to={`/${el._id}`}>View</Link>
+                  </div>
+                </div>
+
+
+
+
 
               </div>
             )
