@@ -55,8 +55,10 @@ function View() {
 
   return (
     <>
-      <div>
-        <form onSubmit={HandleSubmit}>
+      <div className='w-full flex flex-col items-center h-screen justify-center'>
+
+
+        <form onSubmit={HandleSubmit} className='w-full h-min p-2 flex flex-wrap flex-col lg:flex-row  justify-center items-center gap-2'>
           <label className='input input-bordered flex items-center gap-2 w-[300px]'>
             <p className='text-lg text-slate-400 font-semibold'>Name:</p>
             <input
@@ -73,14 +75,15 @@ function View() {
           />
           <button className='btn btn-info' type='submit'>Change</button>
         </form>
+
+
+        {
+          <div className='w-[450px] h-[450px] flex justify-center items-center rounded-lg shadow-lg lg:hover:shadow-2xl bg-slate-400'>
+            <img src={values.avatar} alt={values.name} className='w-[400px] h-[400px] ' />
+
+          </div>
+        }
       </div>
-
-      {
-        <div className='w-[450px] h-[450px] flex justify-center items-center rounded-lg shadow-lg lg:hover:shadow-2xl bg-slate-400'>
-          <img src={values.avatar} alt={values.name} className='w-[400px] h-[400px] ' />
-
-        </div>
-      }
 
     </>
   )
